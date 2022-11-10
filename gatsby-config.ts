@@ -7,15 +7,29 @@ dotConfig({
 
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
-  accessToken: process.env.STRAPI_TOKEN,
+  token: process.env.STRAPI_TOKEN,
   collectionTypes: ['post', 'author', 'category', 'tag'],
   singleTypes: [],
+  inlineImages: {
+    typesToParse: {
+      Article: ['body'],
+      ComponentBlockBody: ['text'],
+    },
+  },
+  locale: ['en'], 
+  preview: true,
+  headers: {},
+  cache: false,
 };
+
 const config: GatsbyConfig = {
   pathPrefix: `/blog`,
   siteMetadata: {
-    title: `ewcolab`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Yawny Coder`,
+    description: `Sharing thought of coding`,
+    twitterUsername: `@yawnycoder`,
+    image: `/icon.png`,
+    siteUrl: `https://info.wcoei.net/blog`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -27,7 +41,7 @@ const config: GatsbyConfig = {
       "icon": "src/images/icon.png"
     }
   }, {
-    resolve: 'gatsby-source-strapi',
+    resolve: 'gatsby-source-strapi-graphql',
     options: strapiConfig
   }, {
     resolve: "gatsby-transformer-sharp"

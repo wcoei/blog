@@ -16,7 +16,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
                     title: string,
                     author: { name: string },
                     category?: { name: string },
-                    body: { data: { body: string } }
+                    body: string
                 }[]
             }
         }
@@ -26,17 +26,14 @@ export const createPages: GatsbyNode['createPages'] = async ({
                 nodes {
                     slug
                     title
+                    abstract
                     author {
                         name
                     }
                     category {
                         name
                     }
-                    body {
-                        data {
-                            body
-                        }
-                    }
+                    body
                 }
             }
         }
@@ -44,7 +41,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     allPosts.data?.allStrapiPost.nodes.forEach(node => {
         createPage({
-            path: node.slug,
+            path: "/pages/" + node.slug,
             component: path.resolve(__dirname, './src/templates/post-template.tsx'),
             //data: node,
             context: node
@@ -52,7 +49,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
 
     let totalPosts = allPosts.data ? allPosts.data.allStrapiPost.nodes.length : 0
-    const pageSize = 1
+    const pageSize = 2
     for (let skip = 0; skip < totalPosts; skip += pageSize) {
         createPage({
             path: skip == 0 ? '/' : `/page-${Math.round(skip / pageSize)}`,

@@ -15,12 +15,13 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "predeploy": "npm run build",
-    "deploy" : "gh-pages -d public"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "@vanilla-extract/babel-plugin": "^1.2.0",
     "@vanilla-extract/css": "^1.9.1",
     "@vanilla-extract/webpack-plugin": "^2.2.0",
+    "dotnet": "^1.1.4",
     "gatsby": "^4.24.7",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
@@ -28,18 +29,22 @@
     "gatsby-plugin-sitemap": "^5.24.0",
     "gatsby-plugin-vanilla-extract": "^3.0.0",
     "gatsby-source-filesystem": "^4.24.0",
-    "gatsby-source-strapi": "^2.0.0",
+    "gatsby-source-strapi-graphql": "^4.6.2",
     "gatsby-transformer-remark": "^5.24.0",
     "gatsby-transformer-sharp": "^4.24.0",
+    "highlight.js": "^11.6.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-markdown": "^8.0.3",
+    "rehype-highlight": "^6.0.0",
+    "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.8.3"
   }
 }
