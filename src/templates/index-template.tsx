@@ -55,7 +55,7 @@ const Index = (pageProps: PageProps<DataProps, PageContextProps>) => {
             ? `/page-${pageContext.skip / pageContext.limit - 1}/`
             : '/'
         }>next</Link>}
-        {pageContext.skip * pageContext.limit + 1 >= pageContext.totalPosts
+        {pageContext.skip * pageContext.limit >= pageContext.totalPosts
           ? null
           : <Link to={`/page-${pageContext.skip / pageContext.limit + 1}/`}>prev</Link>}
       </div>
